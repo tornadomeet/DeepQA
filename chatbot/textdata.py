@@ -27,7 +27,7 @@ import math  # For float comparison
 import os  # Checking file existance
 import random
 
-from chatbot.cornelldata import CornellData
+from cornelldata import CornellData
 
 
 class Batch:

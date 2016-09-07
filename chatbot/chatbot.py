@@ -28,8 +28,10 @@ import os  # Files management
 from tqdm import tqdm  # Progress bar
 import tensorflow as tf
 
-from chatbot.textdata import TextData
-from chatbot.model import Model
+#from chatbot.textdata import TextData
+#from chatbot.model import Model
+from textdata import TextData
+from model import Model
 
 
 class Chatbot:
@@ -233,6 +235,8 @@ class Chatbot:
                     assert len(ops) == 2  # training, loss
                     _, loss, summary = sess.run(ops + (mergedSummaries,), feedDict)
                     self.writer.add_summary(summary, self.globStep)
+                    import pdb; pdb.set_trace()
+                    print "loss=", loss
                     self.globStep += 1
 
                     # Checkpoint
@@ -375,7 +379,7 @@ class Chatbot:
             sess: The current running session
         """
 
-        print('WARNING: ', end='')
+        print('WARNING: ', 'end=')
 
         modelName = self._getModelName()
 
