@@ -88,7 +88,7 @@ class TextData:
     def makeLighter(self, ratioDataset):
         """Only keep a small fraction of the dataset, given by the ratio
         """
-        if not math.isclose(ratioDataset, 1.0):
+        if not np.isclose(ratioDataset, 1.0):
             self.shuffle()  # Really ?
             print('WARNING: Ratio feature not implemented !!!')
         pass

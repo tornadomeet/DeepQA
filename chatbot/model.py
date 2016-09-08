@@ -102,7 +102,7 @@ class Model:
         # For training only
         else:
             # Finally, we define the loss function
-            self.lossFct = tf.nn.seq2seq.sequence_loss(decoderOutputs, self.decoderTargets, self.decoderWeights, self.textData.getVocabularySize())
+            self.lossFct = tf.nn.seq2seq.sequence_loss(decoderOutputs, self.decoderTargets, self.decoderWeights)
             tf.scalar_summary('loss', self.lossFct)  # Keep track of the cost
 
             # Initialize the optimizer

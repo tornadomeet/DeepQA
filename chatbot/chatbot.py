@@ -229,15 +229,16 @@ class Chatbot:
                 # TODO: Also update learning parameters eventually
 
                 tic = datetime.datetime.now()
-                for nextBatch in tqdm(batches, desc="Training"):
+                batchID = 0
+                for nextBatch in batches:
                     # Training pass
                     ops, feedDict = self.model.step(nextBatch)
                     assert len(ops) == 2  # training, loss
                     _, loss, summary = sess.run(ops + (mergedSummaries,), feedDict)
                     self.writer.add_summary(summary, self.globStep)
-                    import pdb; pdb.set_trace()
-                    print "loss=", loss
+                    print("Epoch/Batch: {}/{}\tloss={}").format(e+1, batchID, loss)
                     self.globStep += 1
+                    batchID += 1
 
                     # Checkpoint
                     if self.globStep % self.args.saveEvery == 0:
