@@ -28,8 +28,6 @@ import os  # Files management
 from tqdm import tqdm  # Progress bar
 import tensorflow as tf
 
-#from chatbot.textdata import TextData
-#from chatbot.model import Model
 from textdata import TextData
 from model import Model
 
@@ -306,7 +304,7 @@ class Chatbot:
               'expectation. Type \'exit\' or just press ENTER to quit the program. Have fun.')
 
         while True:
-            question = input(self.SENTENCES_PREFIX[0])
+            question = raw_input(self.SENTENCES_PREFIX[0])
             if question == '' or question == 'exit':
                 break
 
@@ -322,7 +320,7 @@ class Chatbot:
                 print(self.textData.batchSeq2str(questionSeq, clean=True, reverse=True))
                 print(self.textData.sequence2str(answer))
             
-            print()
+            print " "
 
     def singlePredict(self, question, questionSeq=None):
         """ Predict the sentence
